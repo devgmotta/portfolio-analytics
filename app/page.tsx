@@ -1,4 +1,5 @@
 import { NoiseOverlay } from "@/components/noise-overlay";
+import { ExperienceTimelineSection } from "@/components/sections/experience-timeline-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { StackMarqueeSection } from "@/components/sections/stack-marquee-section";
@@ -11,6 +12,7 @@ export default function Home() {
         <HeroSection />
         <StackMarqueeSection />
         <ProjectsSection />
+        <ExperienceTimelineSection />
       </main>
     </div>
   );
