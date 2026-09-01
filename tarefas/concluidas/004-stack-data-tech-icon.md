@@ -1,6 +1,6 @@
 # 004 — data/stack.ts + tech-icon.tsx
 Fase: 1
-Status: pendente
+Status: concluída
 
 ## Objetivo
 Lista tipada de tecnologias (Python, SQL, BigQuery, dbt, Docker, Power BI, React) em data/stack.ts; componente tech-icon.tsx usando react-icons/si (monocromático via currentColor) com fallback lucide Database para SQL (não é marca).
@@ -15,4 +15,4 @@ data/stack.ts, components/tech-icon.tsx
 - Nenhum ícone quebrado/undefined para os 7 itens da lista (verificado: todos os 7 aparecem no RSC payload renderizado).
 
 ## Auditoria
-(preenchido ao concluir)
+Auditor independente (agente a8b971fbba43635d6) confirmou por inspeção direta do pacote instalado que `SiDbt`/`SiPowerbi` de fato não existem em `react-icons/si@5.7.0` (bate com o desvio já registrado acima), e que os 7 itens resolvem sem quebra (build estático exercitou todos). Nenhum finding nesta tarefa. CONVERGE.

@@ -31,7 +31,7 @@ export const PROJECTS: Project[] = [
     description:
       "ELT ponta-a-ponta: ingestão via Airbyte, modelagem em camadas (staging/marts) com dbt, testes de qualidade automatizados e dashboard executivo em Looker Studio.",
     tags: ["Python", "dbt", "BigQuery", "Looker Studio"],
-    repoUrl: "https://github.com/fernandofleite/pipeline-vendas-dbt",
+    repoUrl: "https://github.com/devgmotta/pipeline-vendas-dbt",
     media: {
       kind: "iframe",
       iframeUrl:
@@ -46,7 +46,7 @@ export const PROJECTS: Project[] = [
     description:
       "Orquestração de 12 DAGs em produção, com retries, SLA de 15 min e observabilidade via logs estruturados. Ambiente reprodutível via Docker Compose.",
     tags: ["Airflow", "Docker", "PostgreSQL"],
-    repoUrl: "https://github.com/fernandofleite/orquestracao-airflow-docker",
+    repoUrl: "https://github.com/devgmotta/orquestracao-airflow-docker",
     media: {
       kind: "image",
       src: "/projects/orquestracao-airflow-docker.svg",
@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
     description:
       "Automação de ETL em Python alimentando modelo semântico no Power BI, com atualização incremental e camada de métricas versionada.",
     tags: ["Python", "Power BI", "SQL"],
-    repoUrl: "https://github.com/fernandofleite/dashboard-powerbi-python",
+    repoUrl: "https://github.com/devgmotta/dashboard-powerbi-python",
     media: {
       kind: "image",
       src: "/projects/dashboard-powerbi-python.svg",

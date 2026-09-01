@@ -27,9 +27,14 @@ function ProjectMediaView({
         src={media.iframeUrl}
         title={media.iframeTitle}
         loading="lazy"
+        // No modo "thumb" o iframe fica dentro do trigger do Dialog — sem
+        // pointer-events-none, o iframe (seu próprio browsing context) captura
+        // o clique antes que ele chegue ao trigger, e vira uma parada de Tab
+        // extra e confusa. No modo "full" (dentro do Dialog já aberto) ele
+        // deve continuar interativo normalmente.
         className={cn(
           "w-full border-0",
-          size === "thumb" ? "h-full" : "aspect-video"
+          size === "thumb" ? "h-full pointer-events-none" : "aspect-video"
         )}
       />
     );
@@ -65,6 +70,7 @@ export function ProjectCard({ project }: { project: Project }) {
         />
 
         <DialogTrigger
+          nativeButton={false}
           render={
             <div
               role="button"
@@ -89,8 +95,8 @@ export function ProjectCard({ project }: { project: Project }) {
             {project.tags.map((tag) => (
               <Badge
                 key={tag}
-                variant="secondary"
-                className="border border-secondary/30 bg-secondary/10 font-mono text-secondary"
+                variant="glass"
+                className="font-mono"
               >
                 {tag}
               </Badge>
@@ -134,8 +140,8 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.tags.map((tag) => (
             <Badge
               key={tag}
-              variant="secondary"
-              className="border border-secondary/30 bg-secondary/10 font-mono text-secondary"
+              variant="glass"
+              className="font-mono"
             >
               {tag}
             </Badge>
