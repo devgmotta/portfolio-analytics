@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitetura: Orquestração Airflow + Docker</title>
+  <desc id="desc">Diagrama simplificado: fontes de dados alimentam DAGs do Airflow rodando em containers Docker, que gravam em PostgreSQL.</desc>
+  <rect width="640" height="360" fill="#09090b" />
+  <g fill="none" stroke="#27272a" stroke-width="1">
+    <path d="M0 60H640M0 120H640M0 180H640M0 240H640M0 300H640" />
+    <path d="M80 0V360M240 0V360M400 0V360M560 0V360" />
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="13" fill="#a1a1aa">
+    <g stroke="#10b981" stroke-width="1.5" fill="none">
+      <rect x="40" y="150" width="120" height="60" rx="8" />
+    </g>
+    <text x="100" y="184" text-anchor="middle" fill="#f4f4f5">Fontes</text>
+
+    <g stroke="#f97316" stroke-width="1.5" fill="none">
+      <rect x="260" y="130" width="140" height="100" rx="8" />
+    </g>
+    <text x="330" y="170" text-anchor="middle" fill="#f4f4f5">Airflow</text>
+    <text x="330" y="190" text-anchor="middle">12 DAGs · SLA 15min</text>
+    <text x="330" y="210" text-anchor="middle">Docker Compose</text>
+
+    <g stroke="#10b981" stroke-width="1.5" fill="none">
+      <rect x="480" y="150" width="120" height="60" rx="8" />
+    </g>
+    <text x="540" y="184" text-anchor="middle" fill="#f4f4f5">PostgreSQL</text>
+
+    <path d="M160 180H260" stroke="#3f3f46" stroke-width="1.5" marker-end="url(#arrow)" />
+    <path d="M400 180H480" stroke="#3f3f46" stroke-width="1.5" marker-end="url(#arrow)" />
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8Z" fill="#3f3f46" />
+    </marker>
+  </defs>
+</svg>

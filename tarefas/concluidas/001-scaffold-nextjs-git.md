@@ -1,6 +1,6 @@
 # 001 — Scaffold Next.js + git init
 Fase: 0
-Status: pendente
+Status: concluída
 
 ## Objetivo
 Inicializar o projeto Next.js 15 (App Router, TypeScript, Tailwind, ESLint) com Bun no diretório atual, preservando os arquivos de governança existentes (cabresto-conceitual*.md, .claude/, .cursor/, .mcp.json, .idea/), e inicializar git.
@@ -15,4 +15,4 @@ package.json, bun.lock, next.config.ts, tsconfig.json, tailwind.config.ts, postc
 - Primeiro commit git criado.
 
 ## Auditoria
-(preenchido ao concluir)
+Auditor independente (agente a9f9a47b508f9c5b6) confirmou: build/lint/typecheck limpos (evidência própria rodada por ele), `.gitignore` mesclado preservando as 4 regras pré-existentes (`.mcp.json`, `.mcp.json.bak`, `.cursor/mcp.json`, `.cursor/mcp.json.bak`), nenhum arquivo com token de API commitado (`git log --all -- .mcp.json*` vazio). CONVERGE sem findings nesta tarefa. Findings de outras tarefas da Fase 0 estão detalhados em `002-tailwind-tokens-design-system.md`.

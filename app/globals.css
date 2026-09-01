@@ -94,14 +94,14 @@
 }
 @keyframes meteor {
   0% {
-    transform: rotate(215deg) translateX(0);
+    transform: rotate(var(--angle)) translateX(0);
     opacity: 1;
   }
   70% {
     opacity: 1;
   }
   100% {
-    transform: rotate(215deg) translateX(-500px);
+    transform: rotate(var(--angle)) translateX(-500px);
     opacity: 0;
   }
 }
@@ -115,6 +115,10 @@
 */
 :root,
 .dark {
+  /* Tema único forçado dark — evita que scrollbar/controles nativos do
+     navegador sigam a preferência de SO do usuário (ex.: scrollbar clara
+     sobre página inteiramente escura quando o SO está em modo claro). */
+  color-scheme: dark;
   --background: #09090b;
   --foreground: #f4f4f5;
   --card: #131316;
@@ -162,6 +166,19 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* Acessibilidade: usuário que pede menos movimento não recebe nenhuma das
+   microinterações contínuas (shimmer/marquee/meteor). !important é deliberado
+   aqui — é a exceção de segurança de acessibilidade, não um atalho de estilo. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer-slide,
+  .animate-spin-around,
+  .animate-marquee,
+  .animate-marquee-vertical,
+  .animate-meteor {
+    animation: none !important;
   }
 }
 
