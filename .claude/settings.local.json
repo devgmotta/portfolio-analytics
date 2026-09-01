@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "sdp"
+  ],
+  "enableAllProjectMcpServers": true
+}
