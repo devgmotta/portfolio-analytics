@@ -186,7 +186,8 @@
   .animate-spin-around,
   .animate-marquee,
   .animate-marquee-vertical,
-  .animate-meteor {
+  .animate-meteor,
+  .animate-pulse {
     animation: none !important;
   }
 }
