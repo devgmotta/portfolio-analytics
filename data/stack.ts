@@ -1,4 +1,5 @@
 import {
+  Bot,
   Database,
   HardDrive,
   Layers,
@@ -254,6 +255,13 @@ export const TECH_STACK: TechStackItem[] = [
     name: "Spec-Driven Development",
     cluster: "ai-engineering",
     icon: { kind: "lucide", Icon: ListChecks },
-    note: "Desenvolvimento orientado a spec com harness agêntico (Claude Code) — processo documentado neste próprio portfólio (ver tarefas/).",
+    note: "Cada mudança nasce como uma tarefa com objetivo e critérios de aceite mensuráveis antes de qualquer código (ver tarefas/ deste portfólio).",
+  },
+  {
+    id: "harness-engineering",
+    name: "Harness Engineering",
+    cluster: "ai-engineering",
+    icon: { kind: "lucide", Icon: Bot },
+    note: "Orquestração de agentes de IA (Claude Code) com validação independente — cada entrega deste portfólio passa por um agente de QA separado do agente que implementou, sem aceitar alegação sem evidência real.",
   },
 ];

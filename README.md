@@ -66,7 +66,8 @@ Cada item da Matriz de Competências (`data/stack.ts`) e sua aplicação real ne
 | | LangChain / Function Calling | Padrão de referência pra orquestração de chamadas de LLM em pipelines de automação |
 | | Automação de Workflows | Processo de tarefas deste repo (`tarefas/pendentes/` → validação → `tarefas/concluidas/`) é uma automação de workflow documentada |
 | | Prompt Engineering | Especificação técnica de cada tarefa em `tarefas/*.md` (objetivo, critérios de aceite mensuráveis) |
-| | Spec-Driven Development | O processo `tarefas/pendentes/` → validação independente → `tarefas/concluidas/` deste repo É o SDD com harness agêntico (Claude Code) em prática |
+| | Spec-Driven Development | O processo `tarefas/pendentes/` → validação independente → `tarefas/concluidas/` deste repo É o SDD em prática — cada tarefa nasce com objetivo e critérios de aceite mensuráveis antes do código |
+| | Harness Engineering | Orquestração de agentes (Claude Code): cada tarefa deste repo é implementada por um agente e validada por outro, separado, que não aceita "está pronto" sem evidência real |
 
 ## Rodando localmente
 
