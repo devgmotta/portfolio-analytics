@@ -79,6 +79,15 @@ test.describe("Matriz de competências", () => {
 
     await settleAfterScroll(page, sddItem);
     await sddItem.hover();
-    await expect(page.getByText(/harness agêntico \(Claude Code\)/)).toBeVisible();
+    await expect(page.getByText(/critérios de aceite mensuráveis/)).toBeVisible();
+  });
+
+  test("tooltip de contexto aparece no hover do item de Harness Engineering", async ({ page }) => {
+    await page.goto("/");
+    const harnessItem = page.locator("#skills li", { hasText: "Harness Engineering" });
+
+    await settleAfterScroll(page, harnessItem);
+    await harnessItem.hover();
+    await expect(page.getByText(/Orquestração de agentes de IA/)).toBeVisible();
   });
 });
