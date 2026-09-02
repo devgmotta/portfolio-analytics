@@ -27,7 +27,10 @@ export const ShimmerButton = React.forwardRef<
       shimmerColor = "var(--primary-foreground)",
       shimmerSize = "0.05em",
       shimmerDuration = "3s",
-      borderRadius = "100px",
+      // 0.75rem = --radius-lg do design system (mesmo raio dos outros
+      // botões/cards) — não o pill padrão (100px) do componente Magic UI
+      // original, que destoava do resto da "Terminal Elegance".
+      borderRadius = "0.75rem",
       background = "var(--primary)",
       className,
       children,
@@ -51,8 +54,10 @@ export const ShimmerButton = React.forwardRef<
           } as CSSProperties
         }
         className={cn(
-          "group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden [border-radius:var(--radius)] border border-border px-6 py-3 whitespace-nowrap text-primary-foreground [background:var(--bg)]",
-          "transform-gpu transition-transform duration-300 ease-in-out active:translate-y-px",
+          "group relative z-0 flex h-11 cursor-pointer items-center justify-center gap-1.5 overflow-hidden [border-radius:var(--radius)] border border-border px-5 text-sm font-medium whitespace-nowrap text-primary-foreground [background:var(--bg)]",
+          // Mesma duração/propriedade do Button unificado (size="cta") —
+          // consistência de comportamento de hover em toda a página.
+          "transform-gpu transition-all duration-200 ease-in-out active:translate-y-px",
           className
         )}
         ref={ref}
