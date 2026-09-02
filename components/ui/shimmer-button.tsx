@@ -54,7 +54,7 @@ export const ShimmerButton = React.forwardRef<
           } as CSSProperties
         }
         className={cn(
-          "group relative z-0 flex h-11 cursor-pointer items-center justify-center gap-1.5 overflow-hidden [border-radius:var(--radius)] border border-border px-5 text-sm font-medium whitespace-nowrap text-primary-foreground [background:var(--bg)]",
+          "group relative z-0 flex h-10 cursor-pointer items-center justify-center gap-1.5 overflow-hidden [border-radius:var(--radius)] border border-border px-4 text-sm font-medium whitespace-nowrap text-primary-foreground [background:var(--bg)]",
           // Mesma duração/propriedade do Button unificado (size="cta") —
           // consistência de comportamento de hover em toda a página.
           "transform-gpu transition-all duration-200 ease-in-out active:translate-y-px",

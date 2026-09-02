@@ -5,13 +5,14 @@ import { useState } from "react";
 import { FaLinkedin } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 
-const CONTACT_EMAIL = "devgmleite@gmail.com";
+import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/site";
+
 const SOCIAL_LINKS = [
-  { id: "github", label: "GitHub", href: "https://github.com/devgmotta", Icon: SiGithub },
+  { id: "github", label: "GitHub", href: GITHUB_URL, Icon: SiGithub },
   {
     id: "linkedin",
     label: "LinkedIn",
-    href: "https://linkedin.com/in/devgmotta",
+    href: LINKEDIN_URL,
     Icon: FaLinkedin,
   },
 ];

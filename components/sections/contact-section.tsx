@@ -14,12 +14,7 @@ const initialState: ContactState = { status: "idle", message: "" };
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button
-      type="submit"
-      size="cta"
-      disabled={pending}
-      className="font-mono"
-    >
+    <Button type="submit" size="cta" disabled={pending}>
       {pending ? "Enviando..." : "Enviar mensagem"}
     </Button>
   );

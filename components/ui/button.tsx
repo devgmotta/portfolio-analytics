@@ -26,10 +26,12 @@ const buttonVariants = cva(
         sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
         lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
         // CTAs reais da página (Hero, formulário de contato) — altura,
-        // padding e raio unificados. Ver comentário em
-        // components/sections/hero-section.tsx sobre a padronização com o
-        // ShimmerButton, que não usa este sistema de variantes.
-        cta: "h-11 gap-1.5 rounded-lg px-5 duration-200",
+        // padding, raio e tipografia unificados (inclui font-mono aqui, não
+        // precisa mais repetir className="font-mono" em cada call site). Ver
+        // comentário em components/sections/hero-section.tsx sobre a
+        // padronização com o ShimmerButton, que não usa este sistema de
+        // variantes.
+        cta: "h-10 gap-1.5 rounded-lg border px-4 font-mono duration-200",
         icon: "size-8",
         "icon-xs":
           "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
