@@ -1,8 +1,10 @@
-import { ExternalLink } from "lucide-react";
+import { ChartSpline, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { SiGithub } from "react-icons/si";
 
 import { Badge } from "@/components/ui/badge";
 import { BorderBeam } from "@/components/ui/border-beam";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -142,6 +144,19 @@ export function ProjectCard({ project }: { project: Project }) {
               </a>
             ) : null}
           </div>
+
+          {project.caseStudyUrl ? (
+            <Button
+              variant="outline"
+              size="sm"
+              className="mt-1 w-fit"
+              nativeButton={false}
+              render={<Link href={project.caseStudyUrl} />}
+            >
+              <ChartSpline aria-hidden className="size-3.5" />
+              Explorar Case Interativo
+            </Button>
+          ) : null}
         </div>
       </div>
 

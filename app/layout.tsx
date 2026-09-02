@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { BackgroundGrid } from "@/components/background-grid";
+import { FloatingDock } from "@/components/floating-dock";
 import { MotionProvider } from "@/components/motion-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { TopBar } from "@/components/top-bar";
 import {
   GA_MEASUREMENT_ID,
   SITE_DESCRIPTION,
@@ -74,8 +76,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem={false}
         >
           <MotionProvider>
-            <ThemeToggle />
-            {children}
+            <BackgroundGrid />
+            <TopBar />
+            <div className="pt-14 pb-28">{children}</div>
+            <FloatingDock />
           </MotionProvider>
         </ThemeProvider>
         <Analytics />

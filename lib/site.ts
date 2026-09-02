@@ -18,3 +18,8 @@ export const SITE_DESCRIPTION =
  * é renderizado (ver app/layout.tsx) — não manda gaId vazio pro Google.
  */
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
+export const CONTACT_EMAIL = "devgmleite@gmail.com";
+export const GITHUB_URL = "https://github.com/devgmotta";
+export const GITHUB_REPO_URL = "https://github.com/devgmotta/portfolio-analytics";
+export const LINKEDIN_URL = "https://linkedin.com/in/devgmotta";

@@ -1,0 +1,6 @@
+[test]
+# tests/e2e/ são specs do Playwright (*.spec.ts) — o runner nativo do Bun
+# também casa esse padrão por padrão e tenta rodá-los, o que quebra (Bun
+# não entende test.describe() do Playwright). Exclui explicitamente pra
+# `bun test` cobrir só os testes unitários de verdade (lib/**).
+pathIgnorePatterns = ["tests/e2e/**"]

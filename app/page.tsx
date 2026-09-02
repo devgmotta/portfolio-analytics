@@ -4,7 +4,7 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { ExperienceTimelineSection } from "@/components/sections/experience-timeline-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
-import { StackMarqueeSection } from "@/components/sections/stack-marquee-section";
+import { SkillsMatrixSection } from "@/components/sections/skills-matrix-section";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <NoiseOverlay />
       <main className="relative z-10 flex-1">
         <HeroSection />
-        <StackMarqueeSection />
+        <SkillsMatrixSection />
         <ProjectsSection />
         <ExperienceTimelineSection />
         <ContactSection />

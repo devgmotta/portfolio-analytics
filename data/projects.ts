@@ -20,6 +20,8 @@ export interface Project {
   repoUrl?: string;
   /** Link de demo público, se existir. */
   demoUrl?: string;
+  /** Rota interna com um case study interativo (dashboard, pipeline, código). */
+  caseStudyUrl?: string;
   media: ProjectMedia;
   /** true = ocupa 2 colunas no bento grid. */
   featured?: boolean;
@@ -48,6 +50,7 @@ export const PROJECTS: Project[] = [
     description:
       "Ingestão e modelagem de dados focada em SLA de atendimento — cenário simulado de Call Center, da camada bruta ao dashboard executivo.",
     tags: ["BigQuery", "dbt", "Power BI"],
+    caseStudyUrl: "/projetos/call-center-analytics",
     media: {
       kind: "image",
       src: "/projects/pipeline-call-center.svg",

@@ -4,14 +4,14 @@ import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export function HeroSection() {
   return (
-      // Checado empiricamente (Playwright, 1440x900 / 1440x760 / 1280x720 /
-      // 390x844): o CTA já ficava acima da dobra com min-h-[90vh] em todos
-      // esses viewports — não reproduzi o corte relatado. Troquei mesmo
-      // assim pra padding responsivo: min-h em vh é frágil em janelas muito
-      // baixas/paisagem mobile (pode sobrar espaço vazio gigante ou, no
-      // limite, estourar), enquanto padding cresce com o conteúdo — mais
-      // previsível como base de um design system de produção.
-    <section className="relative flex items-center justify-center overflow-hidden px-6 py-24 md:py-32 lg:py-40">
+    // min-h-[82vh] + py-16 residual: altura mínima controlada (CTA sempre
+    // acima da dobra, checado via Playwright em 1920x1080/1440x900/390x844),
+    // com padding de respiro pra não cortar conteúdo em janelas muito baixas
+    // ou paisagem mobile (min-h puro em vh sem nenhum padding pode estourar).
+    <section
+      id="home"
+      className="relative flex min-h-[82vh] items-center justify-center overflow-hidden px-6 py-16 scroll-mt-14"
+    >
       <div aria-hidden className="absolute inset-0 overflow-hidden">
         <Meteors number={15} />
       </div>
@@ -34,10 +34,12 @@ export function HeroSection() {
         {/*
           Design system de botões unificado: ShimmerButton (Magic UI,
           sistema de props próprio) e Button (shadcn/Base UI, cva) não
-          compartilham a mesma implementação — mas ambos convergem pro
-          mesmo h-11/px-5/rounded-lg/text-sm/duration-200 (ShimmerButton via
-          seus próprios defaults, Button via size="cta"), pra não haver
-          desalinhamento visual entre os dois CTAs lado a lado.
+          compartilham a mesma implementação — mas ambos convergem pro mesmo
+          h-10/px-4/rounded-lg/text-sm/font-mono/duration-200 (ShimmerButton
+          via seus próprios defaults, Button via size="cta", que já embute
+          font-mono), pra não haver desalinhamento visual entre os dois CTAs
+          lado a lado. Variante "secundária" = outline (zinc com borda), não
+          a variante "secondary" do cva (essa é teal, papel de acento/badge).
         */}
         <div className="flex flex-col gap-4 sm:flex-row">
           <ShimmerButton href="#projetos" className="font-mono">
@@ -46,7 +48,6 @@ export function HeroSection() {
           <Button
             variant="outline"
             size="cta"
-            className="font-mono"
             nativeButton={false}
             render={<a href="#experiencia" />}
           >
