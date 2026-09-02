@@ -61,4 +61,24 @@ test.describe("Matriz de competências", () => {
     await page.waitForTimeout(400);
     await expect(page.getByText(/Equivalente:/)).toHaveCount(0);
   });
+
+  test("tooltip de equivalência aparece no hover do item AWS", async ({ page }) => {
+    await page.goto("/");
+    const awsItem = page.locator("#skills li", { hasText: "AWS" });
+
+    await settleAfterScroll(page, awsItem);
+    await awsItem.hover();
+    await expect(
+      page.getByText("Redshift / S3 (AWS) • Equivalente: BigQuery+GCS (GCP) / Synapse+Blob (Azure)")
+    ).toBeVisible();
+  });
+
+  test("tooltip de contexto aparece no hover do item de Spec-Driven Development", async ({ page }) => {
+    await page.goto("/");
+    const sddItem = page.locator("#skills li", { hasText: "Spec-Driven Development" });
+
+    await settleAfterScroll(page, sddItem);
+    await sddItem.hover();
+    await expect(page.getByText(/harness agêntico \(Claude Code\)/)).toBeVisible();
+  });
 });

@@ -1,4 +1,12 @@
-import { Database, HardDrive, Layers, Network, Terminal, Workflow } from "lucide-react";
+import {
+  Database,
+  HardDrive,
+  Layers,
+  ListChecks,
+  Network,
+  Terminal,
+  Workflow,
+} from "lucide-react";
 import {
   SiAnthropic,
   SiDocker,
@@ -70,11 +78,12 @@ export interface TechStackItem {
   cluster: SkillCluster;
   icon: TechIconSlot;
   /**
-   * Tooltip de equivalência arquitetural entre provedores de cloud — só
-   * presente em itens de cloud (BigQuery, Cloud Storage, Azure), sinaliza
-   * fundamentos que não dependem de um único fornecedor.
+   * Tooltip de contexto adicional. Nos itens de cloud (BigQuery, Cloud
+   * Storage, Azure, AWS) é a equivalência arquitetural entre provedores —
+   * sinaliza fundamentos que não dependem de um único fornecedor. Em outros
+   * itens (ex. SDD) é uma nota curta de contexto/aplicação real.
    */
-  equivalents?: string;
+  note?: string;
 }
 
 export const TECH_STACK: TechStackItem[] = [
@@ -90,29 +99,35 @@ export const TECH_STACK: TechStackItem[] = [
     name: "GCP",
     cluster: "data-cloud",
     icon: { kind: "brand", Icon: SiGooglecloud },
-    equivalents: "Google Cloud Platform • Equivalente: Azure / AWS",
+    note: "Google Cloud Platform • Equivalente: Azure / AWS",
   },
   {
     id: "bigquery",
     name: "BigQuery",
     cluster: "data-cloud",
     icon: { kind: "brand", Icon: SiGooglebigquery },
-    equivalents: "BigQuery (GCP) • Equivalente: Azure Synapse / AWS Redshift",
+    note: "BigQuery (GCP) • Equivalente: Azure Synapse / AWS Redshift",
   },
   {
     id: "cloud-storage",
     name: "Cloud Storage",
     cluster: "data-cloud",
     icon: { kind: "lucide", Icon: HardDrive },
-    equivalents: "Cloud Storage (GCS) • Equivalente: Azure Blob / AWS S3",
+    note: "Cloud Storage (GCS) • Equivalente: Azure Blob / AWS S3",
   },
   {
     id: "azure",
     name: "Azure Data Ecosystem",
     cluster: "data-cloud",
     icon: { kind: "mono", label: "AZ" },
-    equivalents:
-      "Synapse / Fabric / Blob (Azure) • Equivalente: BigQuery+GCS (GCP) / Redshift+S3 (AWS)",
+    note: "Synapse / Fabric / Blob (Azure) • Equivalente: BigQuery+GCS (GCP) / Redshift+S3 (AWS)",
+  },
+  {
+    id: "aws",
+    name: "AWS",
+    cluster: "data-cloud",
+    icon: { kind: "mono", label: "AWS" },
+    note: "Redshift / S3 (AWS) • Equivalente: BigQuery+GCS (GCP) / Synapse+Blob (Azure)",
   },
   {
     id: "dbt",
@@ -233,5 +248,12 @@ export const TECH_STACK: TechStackItem[] = [
     name: "Prompt Engineering",
     cluster: "ai-engineering",
     icon: { kind: "lucide", Icon: Terminal },
+  },
+  {
+    id: "sdd-harness",
+    name: "Spec-Driven Development",
+    cluster: "ai-engineering",
+    icon: { kind: "lucide", Icon: ListChecks },
+    note: "Desenvolvimento orientado a spec com harness agêntico (Claude Code) — processo documentado neste próprio portfólio (ver tarefas/).",
   },
 ];
