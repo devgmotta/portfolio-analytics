@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Terminal Elegance — Portfólio
 
-## Getting Started
+Portfólio pessoal de Gabriel Motta Leite: Engenharia de Dados e Software, com o tema visual "Terminal Elegance" — dark por padrão (toggle claro/escuro disponível), glassmorphism sutil, acentos âmbar/teal e tipografia mono pra dados técnicos.
 
-First, run the development server:
+Acesse ao vivo: [gmotta.space](https://gmotta.space) *(domínio ainda apontando pro portfólio anterior até este projeto estar 100% pronto)*
+
+## Stack Tecnológica
+
+**Frontend**
+- [Next.js 16](https://nextjs.org) (App Router, Server Components, Server Actions)
+- [React 19](https://react.dev)
+- TypeScript (tipagem estrita)
+- [Tailwind CSS v4](https://tailwindcss.com) (CSS-first, `@theme`)
+- [shadcn/ui](https://ui.shadcn.com) (preset `base-nova`, primitivos [Base UI](https://base-ui.com))
+- [Magic UI](https://magicui.design) — Shimmer Button, Marquee, Border Beam, Bento Grid, Meteors
+- [Motion](https://motion.dev) (sucessor do Framer Motion) — reveal on scroll, transições
+- [next-themes](https://github.com/pacocoursey/next-themes) — toggle claro/escuro
+
+**Contato & Analytics**
+- [Resend](https://resend.com) — envio de e-mail via Server Action (substitui o backend Express de uma versão anterior)
+- [Zod](https://zod.dev) — validação de formulário
+- [@vercel/analytics](https://vercel.com/docs/analytics)
+- [@next/third-parties](https://nextjs.org/docs/app/guides/third-party-libraries) — Google Analytics 4
+
+**Infra**
+- [Bun](https://bun.sh) — runtime, package manager e lockfile
+- Deploy na [Vercel](https://vercel.com)
+
+## Rodando localmente
+
+Pré-requisito: [Bun](https://bun.sh) instalado.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/devgmotta/portfolio-analytics.git
+cd portfolio-analytics
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variáveis de ambiente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copie `.env.example` para `.env.local` e preencha o que for usar:
 
-## Learn More
+```bash
+cp .env.example .env.local
+```
 
-To learn more about Next.js, take a look at the following resources:
+| Variável | Obrigatória? | Efeito se ausente |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Não | Cai no fallback do domínio `.vercel.app` do projeto (metadata, sitemap, robots, OG image) |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Não | O componente do GA4 simplesmente não é renderizado |
+| `RESEND_API_KEY` | Não | O formulário de contato retorna um erro tratado ("não configurado") em vez de enviar o e-mail |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Nenhuma delas bloqueia o build — o site funciona (menos o envio real de e-mail) mesmo sem nenhuma configurada.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+| Comando | O que faz |
+|---|---|
+| `bun run dev` | Servidor de desenvolvimento (Turbopack) |
+| `bun run build` | Build de produção |
+| `bun run start` | Roda o build de produção localmente |
+| `bun run lint` | ESLint |
+| `bunx tsc --noEmit` | Typecheck sem gerar arquivos |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adicionando um projeto novo ao Bento Grid
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Edite `data/projects.ts` — cada objeto do array `PROJECTS` é um card. Não é preciso tocar em nenhum outro arquivo (a seção mapeia o array inteiro dinamicamente). Mesma lógica pra `data/experience.ts` (timeline profissional), `data/education.ts` (formação) e `data/stack.ts` (marquee de tecnologias).
+
+## Deploy
+
+Deploy contínuo na Vercel — cada push na branch `main` builda automaticamente (integração GitHub já conectada no projeto). Trabalho novo entra por branch + Pull Request (não direto em `main`); veja o histórico de PRs do repositório.
+
+## Processo de desenvolvimento
+
+Este projeto documenta cada entrega em `tarefas/` — `tarefas/pendentes/` (em andamento) e `tarefas/concluidas/` (com critérios de aceite e registro de auditoria/verificação de cada mudança). Serve como changelog técnico detalhado, complementar aos commits.
