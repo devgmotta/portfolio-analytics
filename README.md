@@ -51,6 +51,7 @@ Cada item da Matriz de Competências (`data/stack.ts`) e sua aplicação real ne
 | | GCP / BigQuery | Contexto do pipeline simulado do case study (camada de warehouse) |
 | | Cloud Storage | Camada de ingestão raw descrita na linhagem do pipeline |
 | | Azure Data Ecosystem | Sinalização de equivalência arquitetural (tooltip) — mesmo padrão, provedor diferente |
+| | AWS | Fecha o triângulo de equivalência cloud (tooltip) junto com GCP/Azure — Redshift/S3 como contraparte de BigQuery+GCS/Synapse+Blob |
 | | dbt Core | Modelo dimensional (`staging` → `marts`) documentado e exibido no case study |
 | | Modelagem Dimensional | Grão do fato (`fct_atendimentos`, 1 linha por atendimento) no case study |
 | | PostgreSQL / Supabase | Alternativa de warehouse citada na arquitetura do pipeline |
@@ -65,6 +66,7 @@ Cada item da Matriz de Competências (`data/stack.ts`) e sua aplicação real ne
 | | LangChain / Function Calling | Padrão de referência pra orquestração de chamadas de LLM em pipelines de automação |
 | | Automação de Workflows | Processo de tarefas deste repo (`tarefas/pendentes/` → validação → `tarefas/concluidas/`) é uma automação de workflow documentada |
 | | Prompt Engineering | Especificação técnica de cada tarefa em `tarefas/*.md` (objetivo, critérios de aceite mensuráveis) |
+| | Spec-Driven Development | O processo `tarefas/pendentes/` → validação independente → `tarefas/concluidas/` deste repo É o SDD com harness agêntico (Claude Code) em prática |
 
 ## Rodando localmente
 

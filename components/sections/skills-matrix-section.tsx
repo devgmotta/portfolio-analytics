@@ -36,7 +36,7 @@ function SkillItem({ item }: { item: TechStackItem }) {
     </>
   );
 
-  if (!item.equivalents) {
+  if (!item.note) {
     return <li className={ITEM_CLASS}>{content}</li>;
   }
 
@@ -46,7 +46,7 @@ function SkillItem({ item }: { item: TechStackItem }) {
         {content}
       </TooltipTrigger>
       <TooltipContent side="top" className="max-w-64">
-        {item.equivalents}
+        {item.note}
       </TooltipContent>
     </Tooltip>
   );
@@ -61,8 +61,9 @@ export function SkillsMatrixSection() {
             Matriz de Competências
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Passe o mouse (ou use Tab) nos itens de cloud para ver a
-            equivalência arquitetural entre provedores.
+            Passe o mouse (ou use Tab) nos itens com contexto extra — cloud
+            mostra a equivalência entre provedores, os demais mostram onde
+            se aplicam.
           </p>
         </div>
 

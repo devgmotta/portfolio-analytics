@@ -32,7 +32,7 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: "portfolio-terminal-elegance",
-    title: "Plataforma de Portfólio 'Terminal Elegance'",
+    title: "Plataforma de Portfólio",
     description:
       "Este portfólio — desenvolvido do zero em Next.js (App Router) com foco em alta performance e SEO: rotas de metadata nativas (sitemap, robots, OG image dinâmica), Server Components e microinterações via Motion.",
     tags: ["Next.js", "TypeScript", "Tailwind"],
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
     media: {
       kind: "image",
       src: "/projects/portfolio-terminal-elegance.png",
-      alt: "Screenshot da Hero section deste portfólio, tema Terminal Elegance",
+      alt: "Screenshot da Hero section deste portfólio",
     },
     featured: true,
   },
