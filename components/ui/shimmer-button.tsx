@@ -1,4 +1,8 @@
-import React, { type ComponentPropsWithoutRef, type CSSProperties } from "react"
+import React, {
+  type ComponentPropsWithoutRef,
+  type CSSProperties,
+  type ElementType,
+} from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -10,6 +14,8 @@ export interface ShimmerButtonProps extends ComponentPropsWithoutRef<"button"> {
   background?: string
   className?: string
   children?: React.ReactNode
+  /** Quando presente, renderiza como <a> (ex.: CTA que ancora numa seção). */
+  href?: string
 }
 
 export const ShimmerButton = React.forwardRef<
@@ -25,12 +31,15 @@ export const ShimmerButton = React.forwardRef<
       background = "var(--primary)",
       className,
       children,
+      href,
       ...props
     },
     ref
   ) => {
+    const Comp = (href ? "a" : "button") as ElementType
     return (
-      <button
+      <Comp
+        href={href}
         style={
           {
             "--spread": "90deg",
@@ -88,7 +97,7 @@ export const ShimmerButton = React.forwardRef<
             "absolute inset-(--cut) -z-20 [border-radius:var(--radius)] [background:var(--bg)]"
           )}
         />
-      </button>
+      </Comp>
     )
   }
 )

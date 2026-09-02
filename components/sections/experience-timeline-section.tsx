@@ -1,18 +1,15 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 
 import { EXPERIENCE } from "@/data/experience";
 
 export function ExperienceTimelineSection() {
-  // MotionConfig(reducedMotion="user") do layout só neutraliza propriedades
-  // posicionais/transform (x/y/scale/...), NÃO opacity — confirmado no
-  // código-fonte de motion-dom (positionalKeys não inclui "opacity"). Por
-  // isso o fade precisa ser desligado explicitamente aqui, não só herdado.
-  const shouldReduceMotion = useReducedMotion();
-
   return (
-    <section className="mx-auto max-w-3xl px-6 py-24">
+    <section
+      id="experiencia"
+      className="mx-auto max-w-3xl px-6 py-24 scroll-mt-20"
+    >
       <div className="mb-12 border-b border-border pb-4">
         <h2 className="font-mono text-2xl font-semibold text-foreground">
           Experiência Profissional
@@ -24,12 +21,21 @@ export function ExperienceTimelineSection() {
         className="relative flex list-none flex-col gap-12 border-l-2 border-secondary/40 pl-8"
       >
         {EXPERIENCE.map((entry, index) => (
+          // Só anima `y` (transform), nunca opacity: `useReducedMotion()` só
+          // existe no cliente, então usá-lo para decidir o valor de `initial`
+          // faz o server (sem window) e o client (1º paint) renderizarem
+          // estilos inline diferentes — React detecta esse hydration mismatch
+          // e explicitamente NÃO conserta (loga o aviso e mantém o valor do
+          // server), o que travava o conteúdo em opacity:0 para sempre em
+          // quem usa prefers-reduced-motion (confirmado via Playwright com
+          // reducedMotion:'reduce' + captura do console). `y` não tem esse
+          // problema: é estático, idêntico em todo render, e o `MotionConfig`
+          // global já neutraliza transform corretamente pra quem prefere
+          // menos movimento — sem precisar de hook nenhum aqui.
           <motion.li
             key={entry.id}
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-            whileInView={
-              shouldReduceMotion ? undefined : { opacity: 1, y: 0 }
-            }
+            initial={{ y: 24 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="relative"

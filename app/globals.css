@@ -169,6 +169,15 @@
   }
 }
 
+/* CTAs do Hero ancoram em #projetos/#experiencia — rolagem suave só para
+   quem não pediu menos movimento (explícito, não depende do navegador
+   respeitar prefers-reduced-motion sozinho pra scroll-behavior). */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Acessibilidade: usuário que pede menos movimento não recebe nenhuma das
    microinterações contínuas (shimmer/marquee/meteor). !important é deliberado
    aqui — é a exceção de segurança de acessibilidade, não um atalho de estilo. */
@@ -186,15 +195,6 @@
   /* Glassmorphism sutil dos cards (Hero terminal, project cards) */
   .glass-card {
     @apply bg-card/60 backdrop-blur-md border border-border;
-  }
-
-  /* Spotlight seguindo o cursor — --x/--y setados via onMouseMove no client component */
-  .spotlight-card {
-    background: radial-gradient(
-      600px circle at var(--x, 50%) var(--y, 50%),
-      color-mix(in oklab, var(--primary) 15%, transparent),
-      transparent 40%
-    );
   }
 
   /* Noise texture sutil no fundo da página */

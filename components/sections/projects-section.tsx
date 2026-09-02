@@ -4,7 +4,7 @@ import { PROJECTS } from "@/data/projects";
 
 export function ProjectsSection() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    <section id="projetos" className="mx-auto max-w-6xl px-6 py-24 scroll-mt-20">
       <div className="mb-12 flex items-end justify-between border-b border-border pb-4">
         <h2 className="font-mono text-2xl font-semibold text-foreground">
           Projetos em Destaque

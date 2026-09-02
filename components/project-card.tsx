@@ -29,9 +29,15 @@ function ProjectMediaView({
         loading="lazy"
         // No modo "thumb" o iframe fica dentro do trigger do Dialog — sem
         // pointer-events-none, o iframe (seu próprio browsing context) captura
-        // o clique antes que ele chegue ao trigger, e vira uma parada de Tab
-        // extra e confusa. No modo "full" (dentro do Dialog já aberto) ele
-        // deve continuar interativo normalmente.
+        // o clique antes que ele chegue ao trigger. No modo "full", o Dialog
+        // move foco automaticamente para o primeiro elemento focável do seu
+        // conteúdo ao abrir — sem tabIndex={-1}, isso pousa o foco DENTRO do
+        // iframe (outro browsing context), e Esc para de fechar o modal
+        // porque a tecla nunca chega ao listener do Dialog. tabIndex={-1} em
+        // ambos os modos resolve os dois problemas: tira o iframe da ordem
+        // de tab (thumb) e do auto-foco do Dialog (full) — clique manual do
+        // usuário dentro do embed continua funcionando normalmente.
+        tabIndex={-1}
         className={cn(
           "w-full border-0",
           size === "thumb" ? "h-full pointer-events-none" : "aspect-video"

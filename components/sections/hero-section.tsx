@@ -25,10 +25,19 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row">
-          <ShimmerButton className="font-mono text-sm font-medium">
+          <ShimmerButton
+            href="#projetos"
+            className="font-mono text-sm font-medium"
+          >
             Ver Infraestrutura
           </ShimmerButton>
-          <Button variant="outline" size="lg" className="font-mono text-sm">
+          <Button
+            variant="outline"
+            size="lg"
+            className="font-mono text-sm"
+            nativeButton={false}
+            render={<a href="#experiencia" />}
+          >
             Ler Logs Técnicos
           </Button>
         </div>
