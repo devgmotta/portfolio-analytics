@@ -37,7 +37,7 @@ export function buildContactEmailHtml(params: {
       <tr>
         <td style="padding-bottom:20px;">
           <span style="font-family:ui-monospace,'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#f97316;">
-            Novo contato — Terminal Elegance
+            Novo contato pelo portfólio
           </span>
         </td>
       </tr>
