@@ -107,17 +107,53 @@
 }
 
 /*
-  Terminal Elegance — tema único dark (sem light mode).
+  Terminal Elegance — dois temas via next-themes (attribute="class").
   Tokens traduzidos do protótipo Stitch. Hex só vive aqui (camada de token);
   componentes usam só as classes Tailwind derivadas (bg-primary, text-secondary, etc).
-  Mesmo valores em :root e .dark: <html> sempre carrega a classe "dark" (app/layout.tsx),
-  mas manter os dois em paridade evita depender só da classe estar presente.
+  --primary/--secondary (âmbar/teal) e seus -foreground NÃO mudam entre temas:
+  o contraste deles é calculado contra a própria cor de acento, não contra o
+  fundo da página — continuam passando WCAG AA nos dois temas.
 */
-:root,
+:root {
+  /* Claro: bg quase-branco (não branco puro), ecoando a mesma filosofia do
+     dark ("não é preto puro"). Scrollbar/controles nativos seguem o tema. */
+  color-scheme: light;
+  --background: #fafaf9;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --popover: #ffffff;
+  --popover-foreground: #18181b;
+  --primary: #f97316;
+  --primary-foreground: #1c0a00;
+  --secondary: #10b981;
+  --secondary-foreground: #012018;
+  --muted: #f0f0ef;
+  --muted-foreground: #71717a;
+  --accent: #e4e4e7;
+  --accent-foreground: #18181b;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: rgba(0, 0, 0, 0.15);
+  --ring: #f97316;
+  --chart-1: #f97316;
+  --chart-2: #10b981;
+  --chart-3: #71717a;
+  --chart-4: #a1a1aa;
+  --chart-5: #d4d4d8;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #18181b;
+  --sidebar-primary: #f97316;
+  --sidebar-primary-foreground: #1c0a00;
+  --sidebar-accent: #e4e4e7;
+  --sidebar-accent-foreground: #18181b;
+  --sidebar-border: rgba(0, 0, 0, 0.1);
+  --sidebar-ring: #f97316;
+}
+
 .dark {
-  /* Tema único forçado dark — evita que scrollbar/controles nativos do
-     navegador sigam a preferência de SO do usuário (ex.: scrollbar clara
-     sobre página inteiramente escura quando o SO está em modo claro). */
   color-scheme: dark;
   --background: #09090b;
   --foreground: #f4f4f5;
@@ -186,7 +222,8 @@
   .animate-spin-around,
   .animate-marquee,
   .animate-marquee-vertical,
-  .animate-meteor {
+  .animate-meteor,
+  .animate-pulse {
     animation: none !important;
   }
 }

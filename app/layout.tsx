@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { MotionProvider } from "@/components/motion-provider";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
+import {
+  GA_MEASUREMENT_ID,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -47,11 +57,32 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`dark ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      // suppressHydrationWarning é a exigência documentada do next-themes:
+      // a lib injeta um script bloqueante que seta a classe antes do 1º
+      // paint (sem flash), mas o server não pode saber o tema real do
+      // client de antemão — o aviso é esperado e inofensivo, não é o mesmo
+      // tipo de bug de hydration mismatch que já aconteceu neste projeto
+      // (lá, o VALOR renderizado divergia; aqui só o atributo de classe é
+      // corrigido antes de qualquer pintura visível).
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <MotionProvider>{children}</MotionProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+        >
+          <MotionProvider>
+            <ThemeToggle />
+            {children}
+          </MotionProvider>
+        </ThemeProvider>
+        <Analytics />
       </body>
+      {GA_MEASUREMENT_ID ? (
+        <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+      ) : null}
     </html>
   );
 }

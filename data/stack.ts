@@ -1,5 +1,11 @@
 import { Database } from "lucide-react";
-import { SiDocker, SiGooglebigquery, SiPython, SiReact } from "react-icons/si";
+import {
+  SiGooglebigquery,
+  SiGooglecloud,
+  SiNextdotjs,
+  SiPython,
+  SiTailwindcss,
+} from "react-icons/si";
 import type { IconType } from "react-icons";
 
 /**
@@ -24,13 +30,22 @@ export interface TechStackItem {
 export const TECH_STACK: TechStackItem[] = [
   { id: "python", name: "Python", icon: { kind: "brand", Icon: SiPython } },
   { id: "sql", name: "SQL", icon: { kind: "lucide", Icon: Database } },
+  { id: "gcp", name: "GCP", icon: { kind: "brand", Icon: SiGooglecloud } },
   {
     id: "bigquery",
     name: "BigQuery",
     icon: { kind: "brand", Icon: SiGooglebigquery },
   },
   { id: "dbt", name: "dbt", icon: { kind: "mono", label: "dbt" } },
-  { id: "docker", name: "Docker", icon: { kind: "brand", Icon: SiDocker } },
   { id: "power-bi", name: "Power BI", icon: { kind: "mono", label: "BI" } },
-  { id: "react", name: "React", icon: { kind: "brand", Icon: SiReact } },
+  {
+    id: "nextjs",
+    name: "Next.js",
+    icon: { kind: "brand", Icon: SiNextdotjs },
+  },
+  {
+    id: "tailwind",
+    name: "Tailwind",
+    icon: { kind: "brand", Icon: SiTailwindcss },
+  },
 ];

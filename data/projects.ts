@@ -16,54 +16,43 @@ export interface Project {
   description: string;
   /** Stack/ferramentas exibidas como badges (ex.: "dbt", "BigQuery"). */
   tags: string[];
-  repoUrl: string;
+  /** Ausente quando o projeto ainda não tem repositório público (ex.: WIP). */
+  repoUrl?: string;
   /** Link de demo público, se existir. */
   demoUrl?: string;
   media: ProjectMedia;
   /** true = ocupa 2 colunas no bento grid. */
   featured?: boolean;
+  /** true = mostra badge "EM ANDAMENTO" — projeto ainda não finalizado. */
+  wip?: boolean;
 }
 
 export const PROJECTS: Project[] = [
   {
-    id: "pipeline-vendas-dbt-bigquery",
-    title: "Pipeline de Vendas — dbt + BigQuery",
+    id: "portfolio-terminal-elegance",
+    title: "Plataforma de Portfólio 'Terminal Elegance'",
     description:
-      "ELT ponta-a-ponta: ingestão via Airbyte, modelagem em camadas (staging/marts) com dbt, testes de qualidade automatizados e dashboard executivo em Looker Studio.",
-    tags: ["Python", "dbt", "BigQuery", "Looker Studio"],
-    repoUrl: "https://github.com/devgmotta/pipeline-vendas-dbt",
+      "Este portfólio — desenvolvido do zero em Next.js (App Router) com foco em alta performance e SEO: rotas de metadata nativas (sitemap, robots, OG image dinâmica), Server Components e microinterações via Motion.",
+    tags: ["Next.js", "TypeScript", "Tailwind"],
+    repoUrl: "https://github.com/devgmotta/portfolio-analytics",
     media: {
-      kind: "iframe",
-      iframeUrl:
-        "https://lookerstudio.google.com/embed/reporting/EXEMPLO/page/EXEMPLO",
-      iframeTitle: "Dashboard executivo de vendas",
+      kind: "image",
+      src: "/projects/portfolio-terminal-elegance.png",
+      alt: "Screenshot da Hero section deste portfólio, tema Terminal Elegance",
     },
     featured: true,
   },
   {
-    id: "orquestracao-airflow-docker",
-    title: "Orquestração de ETL com Airflow + Docker",
+    id: "pipeline-call-center-simulado",
+    title: "Pipeline de Dados Operacionais (Simulação Call Center)",
     description:
-      "Orquestração de 12 DAGs em produção, com retries, SLA de 15 min e observabilidade via logs estruturados. Ambiente reprodutível via Docker Compose.",
-    tags: ["Airflow", "Docker", "PostgreSQL"],
-    repoUrl: "https://github.com/devgmotta/orquestracao-airflow-docker",
+      "Ingestão e modelagem de dados focada em SLA de atendimento — cenário simulado de Call Center, da camada bruta ao dashboard executivo.",
+    tags: ["BigQuery", "dbt", "Power BI"],
     media: {
       kind: "image",
-      src: "/projects/orquestracao-airflow-docker.svg",
-      alt: "Diagrama de arquitetura da orquestração Airflow + Docker",
+      src: "/projects/pipeline-call-center.svg",
+      alt: "Diagrama conceitual: ingestão de eventos de Call Center via BigQuery, modelagem em dbt e dashboard em Power BI",
     },
-  },
-  {
-    id: "dashboard-powerbi-python",
-    title: "Dashboard de KPIs — Power BI + Python",
-    description:
-      "Automação de ETL em Python alimentando modelo semântico no Power BI, com atualização incremental e camada de métricas versionada.",
-    tags: ["Python", "Power BI", "SQL"],
-    repoUrl: "https://github.com/devgmotta/dashboard-powerbi-python",
-    media: {
-      kind: "image",
-      src: "/projects/dashboard-powerbi-python.svg",
-      alt: "Diagrama de arquitetura do dashboard de KPIs em Power BI",
-    },
+    wip: true,
   },
 ];
